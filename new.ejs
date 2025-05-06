@@ -1,0 +1,75 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <!-- <%- include("../includes/navbar.ejs") %> -->
+    <br>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h3 style="text-align: center;">Create A New Card</h3>
+    <form action="/listings" method="post" novalidate class="needs-validation">
+        <div class="mb-3">
+            <label for="title" class="form-label"><b>Title</b></label>
+            <input name="listing[title]" placeholder="enter title" type="text" class="form-control" required>
+            <div class="valid-feedback">Title Looks Good!!</div>
+        </div>  
+        
+        <div class="mb-3">
+            <label for="description" class="form-label"><b>Description</b></label>
+            <textarea name="listing[description]" class="form-control" required></textarea>
+            
+        </div>
+       
+        <div class="mb-3">
+            <label for="image" class="form-label"><b>Image link</b></label>
+            <input type="text" name="listing[image]" placeholder="enter image URL/Link" class="form-control">
+        </div>
+
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label"><b>Price</b></label>
+                <input name="listing[price]" placeholder="price" type="number" class="form-control" required>
+                <div class="invalid-feedback">Enter Valid Price!!</div>
+            </div>
+            <div class="mb-3 col-md-8">
+                <label for="Country" class="form-label"><b>Country</b></label>
+                <input type="text" name="listing[country]" placeholder="enter country" class="form-control" required>
+                <div class="invalid-feedback">Please Select the Country</div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label"><b>Location</b></label>
+            <input type="text" name="listing[location]" placeholder="enter location" class="form-control" required>
+            <div class="invalid-feedback">Please Select the valid Location</div>
+        </div>
+        
+       
+       <br>
+        <button class="btn btn-dark offset-6 add-btn">Submit</button>
+        <br><br>
+    </form>
+</div>
+</div>
+    <!-- Include the footer -->
+<!-- <%- include("../includes/footer.ejs") %> -->
+<script>
+    (() => {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>
+
+</body>
